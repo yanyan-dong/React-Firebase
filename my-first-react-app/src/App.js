@@ -1,11 +1,12 @@
-import logo from './logo.svg';
+// if the image in src folder, need to import, then use img tag and {} when needed
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        {/* put image in public folder */}
+        <img src='/logo.svg' className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -15,7 +16,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn React & Firebase
         </a>
       </header>
     </div>
