@@ -70,7 +70,7 @@ function App() {
       )}
 
       {/* pass the handleClose function as a prop */}
-      {showModal && <Modal handleClose={handleClose}>
+      {showModal && <Modal handleClose={handleClose} isSalesModal={true}>
         <h2>Terms and Conditions</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum totam omnis vel similique delectus temporibus ut quas praesentium quia incidunt, fuga quo maiores ipsum, eaque eveniet. Neque dolor iste ad.</p>
       </Modal>}
