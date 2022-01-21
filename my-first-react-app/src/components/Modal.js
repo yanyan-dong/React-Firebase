@@ -1,7 +1,7 @@
 import ReactDom from 'react-dom'
 import './Modal.css'
 
-export default function Modal({ children, handleClose, isSalesModal }) {
+export default function Modal({ children, isSalesModal }) {
     return ReactDom.createPortal((
         <div className="modal-backdrop">
             <div className="modal" style={{
@@ -11,10 +11,6 @@ export default function Modal({ children, handleClose, isSalesModal }) {
                 }}>
                 {/* inline style: the 1st curly braces mean dynamic content, 2nd curly braces mean an object (key: "value")*/}
                 {children}
-                <button 
-                    onClick={handleClose} 
-                    className={isSalesModal ? "sales-btn" : ""}
-                >close</button>
             </div>
             
         </div>

@@ -3,28 +3,28 @@ import { useState } from 'react'
 import Title from './components/Title'
 import Modal from './components/Modal'
 import EventList from './components/EventList'
+import NewEventForm from './components/NewEventForm'
 
 function App() {
   const [showModal, setShowModal] = useState(false)
   const [showEvents, setShowEvents] = useState(true)
-  const [events, setEvents] = useState([
-    {title: "mario's birthday bash", id: 1},
-    {title: "bowser's live stream", id: 2},
-    {title: "race on moo moo farm", id: 3}
-  ])
+  const [events, setEvents] = useState([])
 
-  console.log(showModal)
+  const addEvent = (event) => {
+    // prevState: it holds the value of state before the setState was triggered by React
+    setEvents((prevEvents) => {
+      // return a new array
+      return [...prevEvents, event]
+    })
+    setShowModal(false)
+    // the modal will be closed after the form submitted, so we don't need the close button inside of the modal anymore
+  }
 
   const handleClick = (id) => {
     setEvents(prevEvents => {
       return prevEvents.filter(event => id !== event.id)
     })
   }
-
-  const handleClose = () => {
-    setShowModal(false)
-  }
-
 
   const abc="All the latest events in Marioland"
 
@@ -65,14 +65,12 @@ function App() {
       {!showModal && (
         <div>
           <h2>CHALLENGE - Showing the Modal</h2>
-          <button onClick={() => setShowModal(true)}>show modal</button>
+          <button onClick={() => setShowModal(true)}>Add New Event</button>
         </div>
       )}
 
-      {/* pass the handleClose function as a prop */}
-      {showModal && <Modal handleClose={handleClose} isSalesModal={true}>
-        <h2>Terms and Conditions</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum totam omnis vel similique delectus temporibus ut quas praesentium quia incidunt, fuga quo maiores ipsum, eaque eveniet. Neque dolor iste ad.</p>
+      {showModal && <Modal isSalesModal={true}>
+        <NewEventForm addEvent={addEvent}/>
       </Modal>}
 
     </div>
